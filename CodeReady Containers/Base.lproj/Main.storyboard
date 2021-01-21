@@ -112,12 +112,15 @@
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="OWD-LW-qoj"/>
-                        <menuItem title="About" keyEquivalent="A" id="Bzh-I2-vt6">
+                        <menuItem title="Check for updates..." id="Bzh-I2-vt6">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <accessibility description="about" identifier="about"/>
                             <connections>
-                                <segue destination="SbK-ai-iAt" kind="show" id="wL6-5z-XHC"/>
+                                <action selector="checkForUpdatesClicked:" target="Voe-Tx-rLC" id="Tdc-Ud-c0m"/>
                             </connections>
+                        </menuItem>
+                        <menuItem title="About" keyEquivalent="A" id="gX7-fT-742">
+                            <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="l7P-bD-F7P"/>
                         <menuItem title="Quit" keyEquivalent="q" id="bNu-ql-bvt">

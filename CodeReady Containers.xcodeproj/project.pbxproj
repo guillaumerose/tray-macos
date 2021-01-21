@@ -25,6 +25,7 @@
 		55F8D91925231C2200B5E045 /* PullSecretViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F8D91825231C2200B5E045 /* PullSecretViewController.swift */; };
 		A3390174251DF71D00415FD9 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = A3390173251DF71D00415FD9 /* Socket */; };
 		A3AB4D08261228120017E2FF /* Editable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AB4D07261228120017E2FF /* Editable.swift */; };
+		A3D050D625B8C37700B902A6 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = A3D050D525B8C37700B902A6 /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3D050D625B8C37700B902A6 /* Sparkle in Frameworks */,
 				55946441238D332600BC99CA /* UserNotifications.framework in Frameworks */,
 				A3390174251DF71D00415FD9 /* Socket in Frameworks */,
 			);
@@ -163,6 +165,7 @@
 			name = "CodeReady Containers";
 			packageProductDependencies = (
 				A3390173251DF71D00415FD9 /* Socket */,
+				A3D050D525B8C37700B902A6 /* Sparkle */,
 			);
 			productName = "CodeReady Containers";
 			productReference = 556DAAED237AB11600885463 /* CodeReady Containers.app */;
@@ -199,6 +202,7 @@
 			mainGroup = 556DAAE4237AB11600885463;
 			packageReferences = (
 				A3390172251DF71D00415FD9 /* XCRemoteSwiftPackageReference "BlueSocket" */,
+				A3D050D425B8C37700B902A6 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 556DAAEE237AB11600885463 /* Products */;
 			projectDirPath = "";
@@ -446,6 +450,14 @@
 				minimumVersion = 1.0.52;
 			};
 		};
+		A3D050D425B8C37700B902A6 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle/";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -453,6 +465,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A3390172251DF71D00415FD9 /* XCRemoteSwiftPackageReference "BlueSocket" */;
 			productName = Socket;
+		};
+		A3D050D525B8C37700B902A6 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3D050D425B8C37700B902A6 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

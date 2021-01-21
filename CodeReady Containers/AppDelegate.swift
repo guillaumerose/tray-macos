@@ -8,6 +8,7 @@
 
 import Cocoa
 import UserNotifications
+import Sparkle
 
 var notificationAllowed: Bool = false
 
@@ -23,6 +24,20 @@ struct MenuStates {
 }
 
 let statusNotification = NSNotification.Name(rawValue: "status")
+
+class AutoUpgardeManager: NSObject {
+    static let shared = AutoUpgardeManager()
+
+    func setup() {
+        SUUpdater.shared()?.delegate = self
+    }
+}
+
+extension AutoUpgardeManager: SUUpdaterDelegate {
+    func feedURLString(for updater: SUUpdater) -> String? {
+        return "http://127.0.0.1:8000/appcast.xml"
+    }
+}
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
@@ -88,13 +103,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         Timer.scheduledTimer(timeInterval: statusRefreshRate, target: self, selector: #selector(pollStatus), userInfo: nil, repeats: true)
 
         NotificationCenter.default.addObserver(self, selector: #selector(updateViewWithClusterStatus(_:)), name: statusNotification, object: nil)
+        
+        AutoUpgardeManager.shared.setup()
     }
 
     func startDaemon() {
         let task = Process()
         let stdin = Pipe()
         #if DEBUG
-        task.launchPath = "/usr/local/bin/crc"
+        task.launchPath = "/Users/guillaumerose/.gvm/pkgsets/go1.14/global/bin/crc"
         #else
         task.launchPath = NSString.path(withComponents: [Bundle.main.bundlePath, "Contents", "Resources", "crc"])
         #endif
@@ -200,6 +217,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     @IBAction func quitTrayMenuClicked(_ sender: Any) {
         SendTelemetry(Actions.Quit)
         NSApplication.shared.terminate(self)
+    }
+    
+    @IBAction func checkForUpdatesClicked(_ sender: Any) {
+        SUUpdater.shared().checkForUpdates(self)
     }
 
     func initializeMenus(status: String) {
