@@ -77,6 +77,7 @@ struct ClusterStatus: Decodable {
     let DiskSize: Int64
     let Error: String
     let Success: Bool
+    let Progressing: Bool
 }
 
 // Get the status of the cluster from the daemon
@@ -84,6 +85,10 @@ func clusterStatus() -> String {
     do {
         let data = try SendCommandToDaemon(command: Request(command: "status", args: nil))
         let st = try JSONDecoder().decode(ClusterStatus.self, from: data)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "status"), object: st)
+        if st.Progressing {
+            return "Progressing"
+        }
         if st.Error != "" {
             print(st.Error)
             return "Backend error"

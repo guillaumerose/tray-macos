@@ -157,7 +157,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         self.statusMenuItem.title = status
         if status == "Running" {
             self.statusMenuItem.image = NSImage(named:NSImage.statusAvailableName)
-            self.startMenuItem.isEnabled = false
+            self.startMenuItem.isEnabled = true
             self.stopMenuItem.isEnabled = true
             self.deleteMenuItem.isEnabled = true
             self.webConsoleMenuItem.isEnabled = true
@@ -168,7 +168,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         } else if status == "Stopped" {
             self.statusMenuItem.image = NSImage(named:NSImage.statusUnavailableName)
             self.startMenuItem.isEnabled = true
-            self.stopMenuItem.isEnabled = false
+            self.stopMenuItem.isEnabled = true
             self.deleteMenuItem.isEnabled = true
             self.webConsoleMenuItem.isEnabled = false
             self.copyOcLoginCommand.isEnabled = false
@@ -178,8 +178,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         } else {
             self.statusMenuItem.image = NSImage(named:NSImage.statusNoneName)
             self.startMenuItem.isEnabled = true
-            self.stopMenuItem.isEnabled = false
-            self.deleteMenuItem.isEnabled = false
+            self.stopMenuItem.isEnabled = true
+            self.deleteMenuItem.isEnabled = true
             self.webConsoleMenuItem.isEnabled = false
             self.copyOcLoginCommand.isEnabled = false
             self.ocLoginForDeveloper.isEnabled = false
